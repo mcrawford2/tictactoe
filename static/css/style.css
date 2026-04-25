@@ -1,0 +1,132 @@
+:root {
+	--bg-top: #f4efe4;
+	--bg-bottom: #dceeff;
+	--card: rgba(255, 255, 255, 0.75);
+	--ink: #1f2833;
+	--accent: #0f766e;
+	--accent-2: #ef4444;
+	--line: #8aa8c6;
+	--shadow: 0 18px 48px rgba(34, 63, 91, 0.2);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	font-family: "Space Grotesk", sans-serif;
+	color: var(--ink);
+	background: radial-gradient(circle at 15% 10%, #fff 0%, transparent 26%),
+		linear-gradient(155deg, var(--bg-top), var(--bg-bottom));
+	display: grid;
+	place-items: center;
+}
+
+.page {
+	width: min(92vw, 680px);
+	padding: 24px;
+}
+
+.card {
+	background: var(--card);
+	backdrop-filter: blur(8px);
+	border: 1px solid rgba(255, 255, 255, 0.7);
+	border-radius: 28px;
+	box-shadow: var(--shadow);
+	padding: 28px;
+	text-align: center;
+	animation: rise 600ms ease-out;
+}
+
+.eyebrow {
+	margin: 0;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 0.8rem;
+	color: #405a73;
+}
+
+h1 {
+	margin: 8px 0 8px;
+	font-size: clamp(2rem, 5vw, 2.8rem);
+	line-height: 1;
+}
+
+.status {
+	margin: 0 0 20px;
+	font-size: 1.05rem;
+	font-weight: 600;
+}
+
+.board {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(72px, 1fr));
+	gap: 10px;
+	max-width: 360px;
+	margin: 0 auto;
+}
+
+.cell {
+	aspect-ratio: 1;
+	border-radius: 16px;
+	border: 2px solid var(--line);
+	background: rgba(255, 255, 255, 0.9);
+	font-size: clamp(1.8rem, 5vw, 2.3rem);
+	font-weight: 700;
+	color: var(--accent);
+	cursor: pointer;
+	transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.cell:hover:enabled {
+	transform: translateY(-2px);
+	border-color: #4f87bd;
+	box-shadow: 0 8px 18px rgba(75, 116, 153, 0.25);
+}
+
+.cell.filled {
+	color: var(--accent-2);
+}
+
+.new-game {
+	margin-top: 22px;
+	padding: 12px 18px;
+	font-family: inherit;
+	font-weight: 700;
+	font-size: 0.95rem;
+	border: 0;
+	border-radius: 999px;
+	color: #fff;
+	background: linear-gradient(120deg, #0f766e, #0ea5a7);
+	cursor: pointer;
+	transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.new-game:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 10px 24px rgba(14, 165, 167, 0.35);
+}
+
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(12px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@media (max-width: 520px) {
+	.card {
+		padding: 22px;
+	}
+
+	.board {
+		max-width: 100%;
+	}
+}

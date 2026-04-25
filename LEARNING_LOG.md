@@ -37,3 +37,20 @@
 
 
 ## Date: 2026-25-04
+
+**What I asked AI to do:**
+- asked AI for help with understanding how the project should be structered when introducing Flask
+- asked AI what should be imported for Flask and this game
+- asked AI how to open the Flask app html, because I remember last time I used Flask I did it incorrectly through opening Live Server
+
+**What I didn't understand in the generated code:**
+- i don't understand why some files, such as index.html, need to be seperated into different folders
+- to open FLask app, I did pip install flask and then tried starting the app through the terminal, but that did not work
+
+**What I learned:**
+- folders are needed because flask searches specifically inside a folder named templates/ if you call render_template("index.html")
+- i imported Flask, jsonify, render_template, request, from Flask.
+    - Flask: the core class to create the app
+    - jsonify: converts a Python dict or list into a proper JSON HTTP response, mainly useful for APIs
+    - render_template: the function that finds the HTML file in the templates/ folder and returns it as a response
+    - request: gives access to incoming data from the browser
