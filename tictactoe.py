@@ -22,10 +22,10 @@ def draw_board(board):
 	print()
 
 
-def get_move(board, player):
+def get_move(board, player_name):
 	"""Get a valid move from the current player."""
 	while True:
-		raw = input(f"Player {player}, choose a square (1-9): ").strip()
+		raw = input(f"{player_name}, choose a square (1-9): ").strip()
 
 		if not raw.isdigit():
 			print("Please enter a number from 1 to 9.")
@@ -57,20 +57,47 @@ def check_draw(board):
 	return " " not in board
 
 
-def main():
+def get_player_name(symbol):
+	"""Prompt for a non-empty player name for the given symbol."""
+	while True:
+		name = input(f"Enter name for Player {symbol}: ").strip()
+		if name:
+			return name
+		print("Name cannot be empty.")
+
+
+def ask_play_again(player_x_name, player_o_name):
+	"""Prompt to start another game and handle replay behavior."""
+	while True:
+		answer = input("Play again? (y/n): ").strip().lower()
+		if answer in ("y", "yes"):
+			main(player_x_name, player_o_name)
+			return
+		if answer in ("n", "no"):
+			print("Thanks for playing!")
+			return
+		print("Please enter 'y' or 'n'.")
+
+
+def main(player_x_name=None, player_o_name=None):
 	board = [" "] * 9
 	current_player = "X"
+	if player_x_name is None:
+		player_x_name = get_player_name("X")
+	if player_o_name is None:
+		player_o_name = get_player_name("O")
+	player_names = {"X": player_x_name, "O": player_o_name}
 
 	print("Welcome to Tic-Tac-Toe!")
 
 	while True:
 		draw_board(board)
-		move = get_move(board, current_player)
+		move = get_move(board, player_names[current_player])
 		board[move] = current_player
 
 		if check_winner(board, current_player):
 			draw_board(board)
-			print(f"Player {current_player} wins!")
+			print(f"{player_names[current_player]} ({current_player}) wins!")
 			break
 
 		if check_draw(board):
@@ -79,6 +106,8 @@ def main():
 			break
 
 		current_player = "O" if current_player == "X" else "X"
+
+	ask_play_again(player_x_name, player_o_name)
 
 
 if __name__ == "__main__":

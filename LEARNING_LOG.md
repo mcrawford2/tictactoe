@@ -19,3 +19,21 @@
 **What I learned:**
 - having the plan AI created made making the program seem a lot less daunting, and more easily understandable
 - after asking AI to simplify the code I had and reading through it, I decided to undo changes and keep the original code. This reenforced that AI may have beneficial capabilities a lot of the time, but it is important to always know what changes it makes to your code.
+
+
+## Date: 2026-24-04
+
+**What I asked AI to do:**
+- asked AI where in the code to add "play again" at the end of the game
+- asked AI to help with creating the get_player_name() function, specifically the parameters
+- asked AI to help update any instances of Player X and PLayer O to be user inputted names
+
+**What I didn't understand in the generated code:**
+- i didn't understand why symbol was the parameter for get_player_name()
+
+**What I learned:**
+- asking where to add the code reenforces my learning the order of code writting
+- symbol is just a label for the player mark, not the actual player name which gets inputted
+
+
+## Date: 2026-25-04
