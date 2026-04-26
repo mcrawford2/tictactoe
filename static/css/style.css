@@ -40,19 +40,60 @@ body {
 	animation: rise 600ms ease-out;
 }
 
-.eyebrow {
-	margin: 0;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	font-weight: 700;
-	font-size: 0.8rem;
-	color: #405a73;
-}
-
 h1 {
 	margin: 8px 0 8px;
 	font-size: clamp(2rem, 5vw, 2.8rem);
 	line-height: 1;
+}
+
+.name-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px 10px;
+	margin: 14px 0 14px;
+	align-items: center;
+}
+
+.name-form label {
+	font-size: 0.82rem;
+	font-weight: 700;
+	color: #405a73;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.name-form input {
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid #9fbad2;
+	border-radius: 10px;
+	font: inherit;
+	font-size: 0.95rem;
+	color: var(--ink);
+	background: rgba(255, 255, 255, 0.9);
+}
+
+.name-form input:focus {
+	outline: 2px solid rgba(14, 165, 167, 0.25);
+	border-color: #4f87bd;
+}
+
+.set-names {
+	grid-column: 1 / -1;
+	justify-self: center;
+	padding: 10px 14px;
+	border: 0;
+	border-radius: 999px;
+	font: inherit;
+	font-weight: 700;
+	font-size: 0.88rem;
+	color: #0f766e;
+	background: rgba(15, 118, 110, 0.12);
+	cursor: pointer;
+}
+
+.set-names:hover {
+	background: rgba(15, 118, 110, 0.18);
 }
 
 .status {
@@ -124,6 +165,10 @@ h1 {
 @media (max-width: 520px) {
 	.card {
 		padding: 22px;
+	}
+
+	.name-form {
+		grid-template-columns: 1fr;
 	}
 
 	.board {

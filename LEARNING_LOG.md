@@ -54,3 +54,17 @@
     - jsonify: converts a Python dict or list into a proper JSON HTTP response, mainly useful for APIs
     - render_template: the function that finds the HTML file in the templates/ folder and returns it as a response
     - request: gives access to incoming data from the browser
+
+## Date: 2026-25-04
+
+**What I asked AI to do:**
+- asked AI to help fix flask errors
+- asked AI to remove a specific line from index.html
+- asked AI to incorporate the player name input into the Flask app
+
+**What I didn't understand in the generated code:**
+- the line from index.html I removed was "Flask+Javascript" that appeared on the screen. I did not want to waste time trying to find the exact line, which is why I asked AI to do it for me.
+- the option for players to add names 
+
+**What I learned:**
+- I removed the text "Flask+Javascript" from the screen because I didn't think that including it would benefit the user experience

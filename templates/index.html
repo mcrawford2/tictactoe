@@ -12,8 +12,14 @@
 <body>
 	<main class="page">
 		<section class="card">
-			<p class="eyebrow">Flask + JavaScript</p>
 			<h1>Tic-Tac-Toe</h1>
+			<form id="name-form" class="name-form" autocomplete="off">
+				<label for="player-x-name">Player X</label>
+				<input id="player-x-name" name="player-x-name" type="text" maxlength="20" placeholder="Player X">
+				<label for="player-o-name">Player O</label>
+				<input id="player-o-name" name="player-o-name" type="text" maxlength="20" placeholder="Player O">
+				<button type="submit" class="set-names">Set Names</button>
+			</form>
 			<p id="status" class="status">Loading game...</p>
 
 			<div class="board" id="board" aria-label="Tic-Tac-Toe board">

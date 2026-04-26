@@ -3,10 +3,27 @@ from flask import Flask, jsonify, render_template, request
 app = Flask(__name__)
 
 
-def _new_game_state() -> dict:
+def _sanitize_player_name(value: object, default_name: str) -> str:
+	if isinstance(value, str):
+		name = value.strip()
+		if name:
+			return name
+	return default_name
+
+
+def _player_names_from_payload(payload: dict | None = None) -> dict[str, str]:
+	payload = payload or {}
+	return {
+		"X": _sanitize_player_name(payload.get("X"), "Player X"),
+		"O": _sanitize_player_name(payload.get("O"), "Player O"),
+	}
+
+
+def _new_game_state(player_names: dict | None = None) -> dict:
 	return {
 		"board": ["" for _ in range(9)],
 		"current_player": "X",
+		"player_names": _player_names_from_payload(player_names),
 		"winner": None,
 		"is_draw": False,
 		"is_over": False,
@@ -48,7 +65,20 @@ def get_state() -> dict:
 @app.post("/api/new-game")
 def new_game() -> dict:
 	global game_state
-	game_state = _new_game_state()
+	data = request.get_json(silent=True) or {}
+	game_state = _new_game_state(data.get("player_names"))
+	return jsonify(game_state)
+
+
+@app.post("/api/player-names")
+def set_player_names() -> dict:
+	data = request.get_json(silent=True) or {}
+	player_names = data.get("player_names")
+
+	if not isinstance(player_names, dict):
+		return jsonify({"error": "player_names must be an object with X and O."}), 400
+
+	game_state["player_names"] = _player_names_from_payload(player_names)
 	return jsonify(game_state)
 
 
