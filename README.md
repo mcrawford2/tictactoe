@@ -8,4 +8,4 @@ Terminal version:
 Flask version: 
 1. run pip install flask
 2. run python flask.app.py
-3. open http://127.0.0.1:5000 in your browser. #not working????
+3. open http://127.0.0.1:5000 in your browser.
