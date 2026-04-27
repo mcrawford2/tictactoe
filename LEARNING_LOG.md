@@ -67,4 +67,7 @@
 - the option for players to add names 
 
 **What I learned:**
+- the Flask app had an error because it was running from a different port, which is a a numbered “door” on your computer that a network service listens on. The ports were: 
+    - Port 80: default door for normal HTTP websites.
+    - Port 5000: a common development door used by local apps like Flask.
 - I removed the text "Flask+Javascript" from the screen because I didn't think that including it would benefit the user experience
